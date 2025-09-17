@@ -1,5 +1,6 @@
 package br.com.ls.comanda_api.model;
 
+import br.com.ls.comanda_api.enuns.EPerfil;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,5 +24,6 @@ public class Usuario {
     @Column(nullable = false)
     private String password; // depois a gente coloca criptografia
 
-    private String role; // ADMIN, CAIXA, GARCOM
+    @Enumerated(EnumType.STRING)
+    private EPerfil role; // ADMIN, CAIXA, GARCOM
 }

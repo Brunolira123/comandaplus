@@ -3,7 +3,6 @@ package br.com.ls.comanda_api.view;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.RouterLink;
@@ -27,8 +26,16 @@ public class MainLayout extends AppLayout {
         RouterLink mesasLink = new RouterLink("Mesas", MesasView.class);
         RouterLink estoqueLink = new RouterLink("Estoque", EstoqueView.class);
         RouterLink caixaLink = new RouterLink("Fluxo de Caixa", CaixaView.class);
+        RouterLink usuariosLink = new RouterLink("Usuários", UsuarioListView.class);
+        RouterLink configuracoesLink = new RouterLink("Configurações", ConfiguracoesView.class);
 
-        addToDrawer(dashboardLink, mesasLink, estoqueLink, caixaLink);
+        addToDrawer(
+                dashboardLink,
+                mesasLink,
+                estoqueLink,
+                caixaLink,
+                usuariosLink,
+                configuracoesLink
+        );
     }
 }
-
