@@ -1,7 +1,8 @@
-package br.com.ls.comanda_api.view;
+package br.com.ls.comanda_api.view.usuario;
 
 import br.com.ls.comanda_api.enuns.EPerfil;
 import br.com.ls.comanda_api.service.UsuarioService;
+import br.com.ls.comanda_api.view.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -12,8 +13,6 @@ import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
-import java.awt.*;
 
 @PageTitle("Novo Usuário | Comanda+")
 @Route(value = "usuario/novo", layout = MainLayout.class)

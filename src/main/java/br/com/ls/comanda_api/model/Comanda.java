@@ -1,26 +1,29 @@
 package br.com.ls.comanda_api.model;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 @Data
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class Comanda {
-    private int id;
-    private String cliente; // novo campo
-    private boolean aberta;
-    private List<ItemPedido> itens;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public Comanda(int id) {
-        this.id = id;
-        this.cliente = "Cliente " + id; // padrão, pode ser alterado depois
-        this.aberta = true;
-        this.itens = new ArrayList<>();
-    }
-    public void setFechada(boolean b) {
-    }
+    private String cliente;
+
+    private boolean aberta = true;
+
+    @ManyToOne
+    @JoinColumn(name = "mesa_id")
+    private Mesa mesa;
+
+    @OneToMany(mappedBy = "comanda", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemPedido> itens = new ArrayList<>();
 }

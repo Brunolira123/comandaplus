@@ -71,7 +71,7 @@ public class ComandaFechamentoView extends VerticalLayout implements HasUrlParam
     @Override
     public void setParameter(BeforeEvent event, Integer numero) {
         // Mock da comanda
-        comanda = new Comanda(numero);
+        comanda = new Comanda();
         comanda.getItens().add(new ItemPedido("Cerveja", 2, 10.0));
         comanda.getItens().add(new ItemPedido("Espetinho de Frango", 3, 8.0));
         comanda.getItens().add(new ItemPedido("Refrigerante", 1, 6.0));
@@ -111,13 +111,7 @@ public class ComandaFechamentoView extends VerticalLayout implements HasUrlParam
             dialog.add(new Span("Pagamento via Cartão confirmado!"));
         }
 
-        Button fechar = new Button("Fechar Comanda", ev -> {
-            comanda.setFechada(true);
-            dialog.close();
-            UI.getCurrent().navigate(MesasView.class);
-        });
 
-        dialog.add(fechar);
         dialog.open();
     }
 

@@ -64,7 +64,7 @@ public class ComandaView extends VerticalLayout implements HasUrlParameter<Integ
     @Override
     public void setParameter(BeforeEvent event, Integer numero) {
         // Mock da comanda, futuramente busca do banco
-        comanda = new Comanda(numero);
+        comanda = new Comanda();
         comanda.setItens(new ArrayList<>());
         comanda.setCliente(""); // inicia vazio
         clienteField.setValue(comanda.getCliente());

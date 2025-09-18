@@ -1,5 +1,7 @@
 package br.com.ls.comanda_api.view;
 
+import br.com.ls.comanda_api.view.mesa.MesaListView;
+import br.com.ls.comanda_api.view.usuario.UsuarioListView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;
@@ -23,7 +25,7 @@ public class MainLayout extends AppLayout {
 
         // MENU LATERAL
         RouterLink dashboardLink = new RouterLink("Dashboard", DashboardView.class);
-        RouterLink mesasLink = new RouterLink("Mesas", MesasView.class);
+        RouterLink mesasLink = new RouterLink("Mesas", MesaListView.class);
         RouterLink estoqueLink = new RouterLink("Estoque", EstoqueView.class);
         RouterLink caixaLink = new RouterLink("Fluxo de Caixa", CaixaView.class);
         RouterLink usuariosLink = new RouterLink("Usuários", UsuarioListView.class);

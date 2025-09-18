@@ -29,13 +29,13 @@ public class NovaComandaView extends VerticalLayout {
             }
 
             // Aqui você pode associar a comanda a uma mesa (mock ou banco)
-            Comanda comanda = new Comanda(999); // id mock
+            Comanda comanda = new Comanda(); // id mock
             comanda.setCliente(nomeCliente);
 
             Notification.show("Comanda criada para: " + nomeCliente);
 
             // Redireciona para ComandaView
-            UI.getCurrent().navigate(ComandaView.class, comanda.getId());
+            UI.getCurrent().navigate(ComandaView.class);
         });
 
         add(clienteField, criar);

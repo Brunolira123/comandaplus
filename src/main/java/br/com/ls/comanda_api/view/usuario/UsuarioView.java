@@ -1,8 +1,9 @@
-package br.com.ls.comanda_api.view;
+package br.com.ls.comanda_api.view.usuario;
 
 import br.com.ls.comanda_api.enuns.EPerfil;
 import br.com.ls.comanda_api.model.Usuario;
 import br.com.ls.comanda_api.service.UsuarioService;
+import br.com.ls.comanda_api.view.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;

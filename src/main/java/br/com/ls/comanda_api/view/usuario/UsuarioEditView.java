@@ -1,8 +1,9 @@
-package br.com.ls.comanda_api.view;
+package br.com.ls.comanda_api.view.usuario;
 
 import br.com.ls.comanda_api.model.Usuario;
 import br.com.ls.comanda_api.service.UsuarioService;
 import br.com.ls.comanda_api.enuns.EPerfil;
+import br.com.ls.comanda_api.view.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -12,14 +13,11 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.BeforeEvent;
-import com.vaadin.flow.router.HasUrlParameter;
-import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.*;
 
 @PageTitle("Editar Usuário | Comanda+")
-@Route(value = "usuario", layout = MainLayout.class)
-public class UsuarioEditView extends VerticalLayout implements HasUrlParameter<Long> {
+@Route(value = "usuario/editar/:id", layout = MainLayout.class)
+public class UsuarioEditView extends VerticalLayout implements BeforeEnterObserver {
 
     private final UsuarioService usuarioService;
 
@@ -72,17 +70,19 @@ public class UsuarioEditView extends VerticalLayout implements HasUrlParameter<L
         }
     }
 
+
     @Override
-    public void setParameter(BeforeEvent event, Long id) {
-        if (id != null) {
+    public void beforeEnter(BeforeEnterEvent event) {
+        event.getRouteParameters().get("id").ifPresent(idStr -> {
+            Long id = Long.valueOf(idStr);
             usuario = usuarioService.buscarPorId(id).orElse(null);
             if (usuario != null) {
                 nome.setValue(usuario.getUsername());
                 perfil.setValue(usuario.getRole());
             } else {
                 Notification.show("Usuário não encontrado!");
-                getUI().ifPresent(ui -> ui.navigate(UsuarioListView.class));
+                event.forwardTo(UsuarioListView.class);
             }
-        }
+        });
     }
 }
